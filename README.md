@@ -193,7 +193,7 @@ From root:
 ```bash
 docker-compose up --build
 ```
-Backend → http://localhost:8000  
+Backend → http://localhost:8000/docs  
 Frontend → http://localhost:3000
 
 ---
