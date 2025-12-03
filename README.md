@@ -63,6 +63,18 @@ backend/
 ├── uv.lock
 ├── Dockerfile
 └── .dockerignore
+frontend/
+├── app/
+│   ├── page.tsx
+│   ├── components/
+│   │   ├── MicRecorder.tsx
+│   │   ├── TranscriptDisplay.tsx
+│   │   └── SessionList.tsx
+│   └── styles/
+│
+├── public/
+├── package.json
+└── .env
 
 ```
 

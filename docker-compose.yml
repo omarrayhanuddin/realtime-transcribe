@@ -6,11 +6,12 @@ services:
     container_name: rt-backend
     ports:
       - "8000:8000"
-    volumes:
-      - ./backend:/app
+
     environment:
-      - DATABASE_URL=sqlite://transcriptions.db
-      - VOSK_MODEL_PATH=/app/speech_to_text_models/vosk-model-small-en-us-0.15
+      - DATABASE_URL=sqlite:////data/transcriptions.db
+      - VOSK_MODEL_PATH=/speech_to_text_models/vosk-model-small-en-us-0.15
+    volumes:
+      - backend_db:/data
     restart: unless-stopped
 
   frontend:
@@ -24,3 +25,6 @@ services:
     depends_on:
       - backend
     restart: unless-stopped
+
+volumes:
+  backend_db:

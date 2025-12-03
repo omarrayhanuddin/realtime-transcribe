@@ -55,7 +55,7 @@ frontend/
 │
 ├── public/
 ├── package.json
-└── .env.local
+└── .env
 ```
 
 ---
