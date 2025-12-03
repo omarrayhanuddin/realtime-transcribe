@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  backend:
+    build: ./backend
+    container_name: rt-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    environment:
+      - DATABASE_URL=sqlite://transcriptions.db
+      - VOSK_MODEL_PATH=/app/speech_to_text_models/vosk-model-small-en-us-0.15
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    container_name: rt-frontend
+    environment:
+      - NEXT_PUBLIC_BACKEND_WS_URL=ws://localhost:8000/ws/transcribe
+      - NEXT_PUBLIC_BACKEND_API_URL=http://localhost:8000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    restart: unless-stopped
